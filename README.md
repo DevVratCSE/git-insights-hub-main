@@ -1,73 +1,105 @@
-# Welcome to your Lovable project
+# GitScope – GitHub Profile Analyzer
 
-## Project info
+**Live Demo:** https://akaay.site
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+GitScope is a frontend web application that analyzes GitHub profiles using the **GitHub public REST API**.  
+It provides a clean dashboard to explore user profiles, repositories, language usage, engagement metrics, and side-by-side comparisons.
 
-## How can I edit this code?
+This project demonstrates real-world REST API integration, data aggregation, UI state handling, and frontend architecture using modern React tooling.
 
-There are several ways of editing your application.
+---
 
-**Use Lovable**
+## Project Overview
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+GitScope allows users to:
 
-Changes made via Lovable will be committed automatically to this repo.
+- Search any public GitHub username
+- View profile details and repository statistics
+- Analyze languages, stars, forks, and activity
+- Compare two GitHub profiles side by side
+- Save favorite profiles for quick access
 
-**Use your preferred IDE**
+All data is fetched live from GitHub and rendered on the client.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Key Features
 
-Follow these steps:
+### Profile Analysis
+- Avatar, name, bio, location, and links
+- Followers, following, and repository count
+- Direct link to GitHub profile and website (if available)
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Repository Insights
+- Full list of public repositories
+- Sorting by recent activity, stars, forks, and name
+- Language-based filtering
+- Repository search
+- Stars, forks, descriptions, and last update timestamps
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Analytics & Insights
+- Total stars and forks across all repositories
+- Top programming languages used
+- Most starred repository
+- Most recently updated repository
+- **Health Score** (derived metric based on activity, popularity, and consistency)
 
-# Step 3: Install the necessary dependencies.
-npm i
+### Compare Mode
+- Compare two GitHub users side by side
+- Profile metrics comparison (followers, repos, stars, forks)
+- Language usage comparison
+- Engagement and repository impact comparison
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+### Favorites
+- Save profiles to favorites
+- Persist data using localStorage
+- Quickly reload saved profiles for comparison or review
 
-**Edit a file directly in GitHub**
+### UX & Reliability
+- Loading skeletons during API calls
+- Graceful handling of:
+  - User not found (404)
+  - API rate limits
+  - Network errors
+- Responsive layout for desktop and mobile
+- Cached last successful profile for faster reloads
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+## GitHub API Usage
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+This project uses only **public GitHub REST API endpoints**:
 
-## What technologies are used for this project?
+- User profile  
+  `GET https://api.github.com/users/{username}`
 
-This project is built with:
+- User repositories  
+  `GET https://api.github.com/users/{username}/repos?per_page=100&sort=updated`
+
+No API keys are required.
+
+> Note: GitHub applies rate limits to unauthenticated requests. The application detects and handles rate-limit responses gracefully.
+
+---
+
+## Tech Stack
 
 - Vite
-- TypeScript
 - React
-- shadcn-ui
+- TypeScript
 - Tailwind CSS
+- shadcn/ui
+- GitHub REST API
+- localStorage
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+## Project Structure
 
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+```text
+src/
+ ├─ api/            # GitHub API calls
+ ├─ components/     # UI components
+ ├─ utils/          # helpers (formatting, calculations)
+ ├─ App.tsx         # main application logic
+ └─ main.tsx        # entry point

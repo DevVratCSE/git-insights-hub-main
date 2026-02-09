@@ -103,3 +103,28 @@ src/
  ├─ utils/          # helpers (formatting, calculations)
  ├─ App.tsx         # main application logic
  └─ main.tsx        # entry point
+
+
+
+
+
+**## How to Run Locally**
+
+### Requirements
+- Node.js (LTS recommended)
+- npm
+
+### Steps
+
+```sh
+# Clone the repository
+git clone https://github.com/DevVratCSE/git-insights-hub-main.git
+
+# Go to the project folder
+cd git-insights-hub-main
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
